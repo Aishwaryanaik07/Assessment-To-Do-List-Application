@@ -1,0 +1,21 @@
+<div class="task-form-container">
+    <h2>Add New Task</h2>
+    <form (ngSubmit)="onSubmit()" #taskForm="ngForm">
+        <div class="form-group">
+            <label for="taskTitle">Task Title:</label>
+            <input
+                type="text"
+                id="taskTitle"
+                required
+                [(ngModel)]="task.title"
+                name="title"
+                #title="ngModel"
+            />
+            <div *ngIf="title.invalid && (title.dirty || title.touched)"
+                class="error">
+                <div *ngIf="title.errors?.required">Task title is required.</div>
+            </div>
+        </div>
+        <button type="submit" [disabled]="taskForm.invalid">Add Task</button>
+    </form>
+</div>
